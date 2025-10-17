@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Animasyonlu Web Sitesi</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <div id="animation-container">
+        <canvas id="image-sequence"></canvas>
+
+        <div class="content-overlay">
+            
+            <section id="section-1" class="scroll-section">
+                <div class="section-text">
+                    <h1>GRAND THEFT AUTO VI</h1>
+                    <p>FRAGMANI İZLE</p>
+                </div>
+            </section>
+
+            <section id="section-2" class="scroll-section">
+                <div class="section-text">
+                    <h2>Vice City, ABD.</h2>
+                    <p>Jason ve Lucia, her şeyin kendilerine karşı olduğunun her zaman farkındaydılar...</p>
+                </div>
+            </section>
+            
+            <section id="section-3" class="scroll-section">
+                <div class="section-text">
+                    <h2>Sadece Leonida'da</h2>
+                    <p>Güneş battığında ve neon ışıkları parladığında...</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div id="spacer-1" class="spacer"></div>
+    <div id="spacer-2" class="spacer"></div>
+    <div id="spacer-3" class="spacer"></div>
+    
+    <div id="footer-content" style="height: 100vh; background-color: #0d0c1d; color: white; display: flex; justify-content: center; align-items: center;">
+        <h1>Sitenin Geri Kalan İçeriği Buradan Başlar</h1>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
