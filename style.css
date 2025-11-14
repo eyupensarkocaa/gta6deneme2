@@ -1,77 +1,649 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+
+/*==========================================================
+  GENEL SIFIRLAMA VE FONT TANIMLARI
+==========================================================*/
 body {
+    background-color: #F5F5F5; 
+    font-family: 'Montserrat', sans-serif; 
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* Sabitlenmiş Animasyon Alanı */
-#animation-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
-/* Canvas (Görüntülerin Çizildiği Yer) */
-#image-sequence {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* Metinlerin ve İçeriklerin Üst Katmanı */
-.content-overlay {
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+/*==========================================================
+  RENK PALETİ VE BUTTON STİLLERİ
+==========================================================*/
+:root {
+    --primary-color: #5C4033;       /* Koyu Kahverengi / Kahve Çekirdeği */
+    --secondary-color: #B8860B;     /* Altın Rengi - Vurgu */
+    --background-light: #FBFBFB;    /* İçerik Kutularının Arka Planı */
+    --background-dark: #333333;     /* Footer ve koyu kısımlar */
+    --text-dark: #333;
+    --text-light: #fff;
+    --button-hover-secondary: #d4af37; 
+}
+
+/* Genel Buton Stilleri */
+.btn-order, .btn-primary, .btn-secondary {
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 12px 25px;
+    display: inline-block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Kart İçindeki Buton Stili */
+.btn-card {
+  position: relative;
+  color: #fff;
+  background: var(--secondary-color); /* Altın rengi buton */
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.btn-card:hover {
+  background: var(--button-hover-secondary);
+}
+
+/* Diğer Ana Butonlar */
+.btn-order, .btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btn-order:hover, .btn-primary:hover {
+    background-color: var(--button-hover-secondary);
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 2px solid var(--text-light);
+    padding: 10px 23px;
+}
+.btn-secondary:hover { 
+    background-color: var(--text-light); 
+    color: var(--primary-color); 
+}
+
+
+/*==========================================================
+  HEADER VE NAVİGASYON STİLLERİ
+==========================================================*/
+.main-header {
+    background-color: var(--background-light); 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+}
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+.contact-icons a {
+    margin-left: 18px;
+    color: var(--primary-color);
+    font-size: 16px;
+}
+.contact-icons a:hover {
+    color: var(--secondary-color);
+}
+.language-options {
+    margin-left: 20px;
+}
+.language-options img {
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+}
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+.logo img {
+    height: 60px; 
+}
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+.main-nav ul li a {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    padding-bottom: 8px;
+    position: relative;
+    font-size: 15px;
+}
+.main-nav ul li a:after {
+    content: '';
     position: absolute;
-    top: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-color);
+    bottom: 0;
     left: 0;
+    transition: width 0.3s;
+}
+.main-nav ul li a:hover:after {
     width: 100%;
-    height: 100%;
-    pointer-events: none; /* Metinlerin kaydırmayı engellememesi için */
 }
 
-/* Her Bölümün İçerik Stili */
-.scroll-section {
-    height: 100vh;
+
+/*==========================================================
+  HERO (ANA SAYFA SLIDER) STİLLERİ
+==========================================================*/
+.hero-section {
+    position: relative;
+}
+.hero-slider-container {
+    position: relative;
+    width: 100%;
+    height: 650px; 
+}
+.slider-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.slider-overlay {
+    position: absolute;
+    bottom: 15%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.65);
+    color: var(--text-light);
+    text-align: center;
+    padding: 30px 60px;
+    border-radius: 10px;
+    max-width: 800px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+.slider-overlay h1 {
+    font-size: 54px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+.slider-overlay h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: var(--secondary-color);
+    font-weight: 400;
+}
+.slider-overlay p {
+    margin-bottom: 35px;
+    font-size: 16px;
+}
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-light);
+    border: none;
+    padding: 15px 12px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+.slider-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+.left-arrow { left: 20px; }
+.right-arrow { right: 20px; }
+
+
+/*==========================================================
+  ÜRÜNLER BÖLÜMÜ - INTERAKTİF KARTLAR
+==========================================================*/
+.products-section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--background-light); 
+    overflow-x: hidden; /* Kart animasyonu için gerekebilir */
+}
+
+.product-container-wrapper {
+    /* Bu bölüm sadece başlık ve açıklama için */
+    margin-bottom: 60px;
+}
+
+.section-description {
+    max-width: 900px;
+    margin: 20px auto 60px;
+    font-size: 17px;
+}
+
+/* 🔸 Kapsayıcı alan (Sizin sağladığınız kart container'ı) */
+.product-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+  gap: 100px; /* satır ve sütun arası boşluk */
+  justify-content: center;
+  align-items: center;
+  padding: 0 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Arka plan rengini body'den almalı, bu yüzden kart CSS'indeki koyu renk kaldırıldı */
+/* body { background: #3b1f0a; } yerine ana site arka planı kullanıldı */
+
+
+/* 🔸 Kart */
+.card {
+  position: relative;
+  width: 300px;
+  height: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
+  
+  /* Sizin verdiğiniz kart gölge ve arka plan */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  background: var(--primary-color); /* Koyu kahve kart arka planı */
+  border-radius: 20px;
+  border: 2px solid transparent;
+}
+
+.card:hover {
+  width: 620px;
+  box-shadow: 0 0 35px rgba(184, 134, 11, 0.6); /* Altın rengi parlama */
+  transform: scale(1.03);
+  border-color: var(--secondary-color);
+}
+
+/* 🔸 Daire arka plan */
+.card .circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .circle::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: #3c2a21; /* Koyu kahve iç halka */
+  border: 8px solid var(--clr);
+  transition: 0.5s ease;
+  filter: drop-shadow(0 0 15px var(--clr)) drop-shadow(0 0 40px var(--clr));
+}
+
+.card:hover .circle::before {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--clr);
+}
+
+/* 🔸 Logo */
+.card .circle .logo {
+  position: relative;
+  width: 220px;
+  transition: 0.5s;
+  z-index: 10;
+  /* Logo rengi koyu arka planda görünmesi için filtre */
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); 
+}
+
+.card:hover .circle .logo {
+  transform: scale(0);
+}
+
+/* 🍪 Cookie fotoğrafı */
+.cookie-image {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%) scale(0) rotate(10deg);
+  height: 280px;
+  transition: 0.6s ease-in-out;
+  z-index: 5;
+  opacity: 0;
+}
+
+/* Hover olduğunda */
+.card:hover .cookie-image {
+  top: 45%; 
+  left: 78%; 
+  height: 340px;
+  transform: translate(-50%, -50%) scale(1) rotate(8deg);
+  opacity: 1;
+  transition-delay: 0.4s;
+  z-index: 15; /* Yazıdan üste çıkardık */
+}
+
+/* ✨ İçerik */
+.card .content {
+  position: absolute;
+  width: 45%;
+  left: 15%;
+  padding: 20px;
+  opacity: 0;
+  transition: 0.5s ease;
+  visibility: hidden;
+  z-index: 10;
+  font-family: 'Poppins', sans-serif; /* Bu bölümü Poppins tuttum */
+}
+
+.card:hover .content {
+  opacity: 1;
+  visibility: visible;
+  left: 30px;
+  transition-delay: 0.5s;
+}
+
+.card .content h2 {
+  color: #fff; /* Başlık rengi beyaza çevrildi */
+  text-transform: uppercase;
+  font-size: 2em;
+  margin-bottom: 10px;
+  line-height: 1.1;
+}
+
+.card .content p {
+  color: #fff;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+
+/*==========================================================
+  KURUMSAL, KALİTE VE FOOTER STİLLERİ
+==========================================================*/
+/* Kurumsal/İmalathane Bölüm */
+.manufacturing-section {
+    background-color: var(--primary-color); 
+    color: var(--text-light);
+    padding: 80px 0;
+    text-align: center;
+}
+.manufacturing-section h2 {
+    color: var(--text-light); 
+}
+.section-description-wide {
+    max-width: 1000px;
+    margin: 25px auto 0;
+    font-size: 17px;
+}
+
+/* Kalite Politikası Bölümü */
+.quality-policy-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+.policy-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+.policy-image-container {
+    flex: 1;
+    text-align: right;
+}
+.policy-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.policy-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 40px;
+}
+.policy-item {
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: var(--background-light);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+.policy-item:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+.policy-item h3 {
+    color: var(--primary-color);
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 700;
+}
+.icon-box {
+    color: var(--secondary-color);
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--background-dark); 
+    color: #ccc;
+    padding: 40px 0 15px;
+}
+.footer-logo img {
+    height: 50px; 
+    filter: brightness(0) invert(1);
+    margin-bottom: 25px;
+}
+.footer-nav ul {
     display: flex;
     justify-content: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+.footer-nav ul li a {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #ccc;
+}
+.footer-nav ul li a:hover {
+    color: var(--secondary-color);
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    color: white;
-    opacity: 0; /* Başlangıçta gizle, GSAP ile görünür yap */
+    font-size: 13px;
+}
+.social-media-footer a {
+    color: var(--secondary-color);
+    font-size: 18px;
+    margin-right: 15px;
+}
+.social-media-footer a:hover {
+    color: #fff;
+}
+.yurum-medya img {
+    height: 25px; 
+    filter: brightness(0) invert(1);
+    opacity: 0.7;
 }
 
-.section-text {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Okunabilirliği artırmak için hafif arka plan */
-    border-radius: 10px;
+
+/*==========================================================
+  DUYARLILIK (RESPONSIVE) AYARLARI
+==========================================================*/
+@media (max-width: 1200px) {
+    .product-cards-grid {
+        padding: 0 20px;
+    }
+}
+@media (max-width: 992px) {
+    .main-nav ul {
+        gap: 15px;
+    }
+    .policy-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .policy-image-container {
+        order: -1; 
+    }
+    .policy-image-container img {
+        max-width: 350px;
+    }
+    .hero-slider-container {
+        height: 550px;
+    }
+    /* Kart Grid'i Tek Sütun */
+    .product-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+    .card {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .card:hover {
+        width: 95%; /* biraz daha genişleyebilir */
+    }
+    .card:hover .cookie-image {
+        height: 300px;
+        left: 65%; /* resmi biraz daha sola çektik */
+    }
 }
 
-h1 { font-size: 5vw; }
-h2 { font-size: 4vw; }
-p { font-size: 1.5vw; }
-
-
-/* Kaydırma Boşlukları (Sadece Kaydırma Mesafesi Yaratmak İçin) */
-.spacer {
-    /* Her bir bölüm için ne kadar kaydırma mesafesi istiyorsanız ayarlayın */
-    height: 400vh; /* Örn: Her bölüm 4 ekran yüksekliğinde kaydırma yaratır */
-    z-index: 1; /* Altta kalması için */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 30px;
+    }
+    .main-nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+        margin: 15px 0;
+    }
+    .hero-slider-container {
+        height: 450px;
+    }
+    .slider-overlay h1 {
+        font-size: 38px;
+    }
+    .slider-overlay h2 {
+        font-size: 24px;
+    }
+    .policy-points {
+        grid-template-columns: 1fr; 
+    }
+    .footer-nav ul {
+        flex-wrap: wrap;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+    }
+    /* Kartlar için ek mobil düzenleme */
+    .card:hover {
+        height: 500px; /* Dikey alanda daha fazla yer verdik */
+    }
+    .card:hover .cookie-image {
+        top: 60%; /* Resmi biraz daha aşağı kaydırdık */
+        left: 50%; 
+        height: 250px;
+    }
+    .card .content {
+        width: 90%;
+        left: 5%;
+        top: 10%;
+    }
+    .card:hover .content {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10%;
+    }
+    .card:hover .circle::before {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background: var(--clr);
+    }
 }
 
-/* ------------------------------------------- */
-/* GTA VI Benzeri Logo Efekti İçin İsteğe Bağlı Stil */
-/* ------------------------------------------- */
-
-/* Logo (Sadece Bölüm 1 için) */
-#section-1 .section-text {
-    font-family: 'Arial Black', sans-serif; /* Daha kalın bir font kullanın */
-    background: none;
-}
-
-#section-1 h1 {
-    font-size: 10vw;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+@media (max-width: 480px) {
+    .slider-overlay h1 {
+        font-size: 30px;
+    }
+    .slider-overlay {
+        padding: 20px 30px;
+        bottom: 5%;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .btn-primary {
+        margin-right: 0;
+    }
 }
