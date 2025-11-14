@@ -3,52 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scroll Animasyonlu Web Sitesi</title>
+    <title>Cookie Woman </title>
+    <!-- Modern Font Eklendi -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome ikonları için link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-    <div id="animation-container">
-        <canvas id="image-sequence"></canvas>
-
-        <div class="content-overlay">
-            
-            <section id="section-1" class="scroll-section">
-                <div class="section-text">
-                    <h1>GRAND THEFT AUTO VI</h1>
-                    <p>FRAGMANI İZLE</p>
+    <!-- Üst Bar ve Logo Alanı -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="top-bar">
+                <!-- Sosyal Medya & İletişim İkonları -->
+                <div class="contact-icons">
+                    <a href="https://www.instagram.com/imcookiewomann?igsh=MXgwMHV6MTJqcnVzNw=="><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                    <a href="+90 530 547 39 77"><i class="fab fa-whatsapp"></i></a>
                 </div>
-            </section>
-
-            <section id="section-2" class="scroll-section">
-                <div class="section-text">
-                    <h2>Vice City, ABD.</h2>
-                    <p>Jason ve Lucia, her şeyin kendilerine karşı olduğunun her zaman farkındaydılar...</p>
+                <!-- Dil Seçenekleri -->
+                <div class="language-options">
+                    <!-- RESİM YERİ: TÜRK BAYRAĞI RESMİ URL (20x20 civarı) -->
+                    <img src="https://placehold.co/20x15/5C4033/fff?text=TR" alt="Türkçe"> TR
+                    <a href="#">EN</a>
                 </div>
-            </section>
-            
-            <section id="section-3" class="scroll-section">
-                <div class="section-text">
-                    <h2>Sadece Leonida'da</h2>
-                    <p>Güneş battığında ve neon ışıkları parladığında...</p>
-                </div>
-            </section>
+            </div>
 
+            <nav class="main-nav">
+                <div class="logo">
+                    <!-- RESİM YERİ: LOGO RESMİ URL -->
+                    <img src="https://placehold.co/150x60/5C4033/fff?text=LOGO" alt="Cookie Woman Logo">
+                </div>
+                <ul>
+                    <li><a href="#anasayfa">ANASAYFA</a></li>
+                    <li><a href="#urunler">ÜRÜNLER</a></li>
+                    <li><a href="#davet">DAVET</a></li>
+                    <li><a href="#kurumsal">KURUMSAL</a></li>
+                    <li><a href="#iletisim">İLETİŞİM</a></li>
+                </ul>
+                <a href="#" class="btn-order">SİPARİŞ</a>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <div id="spacer-1" class="spacer"></div>
-    <div id="spacer-2" class="spacer"></div>
-    <div id="spacer-3" class="spacer"></div>
+    <!-- Ana Sayfa Banner/Slider Bölümü -->
+    <section id="anasayfa" class="hero-section">
+        <div class="hero-slider-container">
+            <!-- RESİM YERİ: ANA SAYFA GÖZ ALICI ARKA PLAN RESMİ URL -->
+            <div class="slider-image" style="background-image: url('Çikolatalı Cookie _ Lotus Cookie _ Cookie Kurabiye');">
+                <div class="slider-overlay">
+                    <h1>Cookie Lezzetleri</h1>
+                    <h2>Lezzetli Damla Çikolatalı Cookie'ler Burada!</h2>
+                    <p>
+                        Cookie kurabiyeye tutkunlar için özel olarak hazırlanan taze ve lezzetli Cookie Kurabiyelerimizi keşfedin.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#urunler" class="btn-primary">TÜM ÜRÜNLER</a>
+                        <a href="#iletisim" class="btn-secondary">İLETİŞİME GEÇİN</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider'ın Sol ve Sağ Okları -->
+            <button class="slider-arrow left-arrow"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-arrow right-arrow"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- ÜRÜNLER BÖLÜMÜ - INTERAKTİF KARTLAR İLE YENİLENDİ -->
+    <section id="urunler" class="products-section">
+        <div class="container product-container-wrapper">
+            <h2>Cookie Kurabiye Ürünlerimiz</h2>
+            <p class="section-description">
+                kartlarımızı inceleyerek her bir kurabiyemizin özel tadını ve içeriğini keşfedin!
+            </p>
+
+            <!-- Sizin Sağladığınız Interaktif Kart Yapısı -->
+            <div class="product-cards-grid">
+                
+                <!-- 1. Lotus Cookie -->
+                <div class="card">
+                    <!-- BURADA CIRCLE RENGİ ÖNEMLİ: Kurabiyenin ana rengi olmalı -->
+                    <div class="circle" style="--clr: #b76e2c;"> 
+                        <!-- RESİM YERİ: KART LOGOSU (Küçük, yuvarlak, cookiewoman.png gibi) -->
+                        <img src="/Users/macos/Desktop/adsız klasör/cookiewoman.png" class="logo" alt="Cookie Woman Logo" />
+                    </div>
+                    <div class="content">
+                        <h2>Lotus Cookie</h2>
+                        <p>Lotus Biscoff’un karamelize tadını yumuşacık kurabiyelerimizde keşfedin.</p>
+                        <a href="#" class="btn-card">Daha Fazla Keşfet</a>
+                    </div>
+                    <!-- RESİM YERİ: ÜRÜN RESMİ (lotus-cookie-1.png gibi) -->
+                    <img src="/Users/macos/Desktop/adsız klasör/lotus-cookie-1-300x300.png" alt="Lotus Cookie" class="cookie-image" />
+                </div>
+
+                <!-- 2. Van Stapele Cookie -->
+                <div class="card">
+                    <div class="circle" style="--clr: #3c2a21;">
+                        <img src="/Users/macos/Desktop/adsız klasör/cookiewoman.png" class="logo" alt="Cookie Woman Logo" />
+                    </div>
+                    <div class="content">
+                        <h2>Van Stapele Cookie</h2>
+                        <p>Hollanda’nın efsane kurabiyesi: dışı çıtır, içi beyaz çikolata dolu!</p>
+                        <a href="#" class="btn-card">Daha Fazla Keşfet</a>
+                    </div>
+                    <!-- RESİM YERİ: ÜRÜN RESMİ (van-cookie.png gibi) -->
+                    <img src="/Users/macos/Desktop/adsız klasör/VAN-STAPELE-COOKIE-300x300.png" alt="Van Stapele Cookie" class="cookie-image" />
+                </div>
+
+                <!-- 3. Frambuazlı Cookie -->
+                <div class="card">
+                    <div class="circle" style="--clr: #c12d4b;">
+                        <img src="/Users/macos/Desktop/adsız klasör/cookiewoman.png" class="logo" alt="Cookie Woman Logo" />
+                    </div>
+                    <div class="content">
+                        <h2>Frambuazlı Cookie</h2>
+                        <p>Tatlı ve ekşi frambuaz parçalarıyla tazeliği hisset!</p>
+                        <a href="#" class="btn-card">Daha Fazla Keşfet</a>
+                    </div>
+                    <!-- RESİM YERİ: ÜRÜN RESMİ (raspberry-cookie.png gibi) -->
+                    <img src="/Users/macos/Desktop/adsız klasör/frambuaz-cookie-300x300.jpg" alt="Frambuaz Cookie" class="cookie-image" />
+                </div>
+                
+                <!-- 4. Dubai Çikolatalı Cookie -->
+                <div class="card">
+                    <div class="circle" style="--clr: #4b2b1f;">
+                        <img src="/Users/macos/Desktop/adsız klasör/cookiewoman.png" class="logo" alt="Cookie Woman Logo" />
+                    </div>
+                    <div class="content">
+                        <h2>Dubai Çikolatalı Cookie</h2>
+                        <p>Lüks Belçika çikolatası ve hurma dokunuşuyla egzotik bir tat deneyimi!</p>
+                        <a href="#" class="btn-card">Daha Fazla Keşfet</a>
+                    </div>
+                    <!-- RESİM YERİ: ÜRÜN RESMİ (dubai-cookie.png gibi) -->
+                    <img src="/Users/macos/Desktop/adsız klasör/dubai-cookie-300x300.png" alt="Dubai Cookie" class="cookie-image" />
+                </div>
+
+                <!-- 5. Çikolatalı Cookie -->
+                <div class="card">
+                    <div class="circle" style="--clr: #2f150a;">
+                        <img src="/Users/macos/Desktop/adsız klasör/cookiewoman.png" class="logo" alt="Cookie Woman Logo" />
+                    </div>
+                    <div class="content">
+                        <h2>Çikolatalı Cookie</h2>
+                        <p>Bol damla çikolata parçalarıyla klasik ama vazgeçilmez bir tat!</p>
+                        <a href="#" class="btn-card">Daha Fazla Keşfet</a>
+                    </div>
+                    <!-- RESİM YERİ: ÜRÜN RESMİ (choco-cookie.png gibi) -->
+                    <img src="/Users/macos/Desktop/adsız klasör/cikolatali-cookie-300x300.png" alt="Chocolate Cookie" class="cookie-image" />
+                </div>
+
+                <!-- 6. Anzac Cookie (veya başka bir ürün) -->
+                <div class="card">
+                    <div class="circle" style="--clr: #d09c5c;">
+                        <img src="/Users/macos/Desktop/adsız klasör/cookiewoman.png" class="logo" alt="Cookie Woman Logo" />
+                    </div>
+                    <div class="content">
+                        <h2>Anzac Cookie</h2>
+                        <p>Yulaf, hindistan cevizi ve balın mükemmel uyumu. Geleneksel Avustralya lezzeti!</p>
+                        <a href="#" class="btn-card">Daha Fazla Keşfet</a>
+                    </div>
+                    <!-- RESİM YERİ: ÜRÜN RESMİ (anzac-cookie.png gibi) -->
+                    <img src="/Users/macos/Desktop/adsız klasör/anzac-kurabiye-300x300.png" alt="Anzac Cookie" class="cookie-image" />
+                </div>
+            </div>
+            <!-- Kart yapısı sonu -->
+        </div>
+    </section>
     
-    <div id="footer-content" style="height: 100vh; background-color: #0d0c1d; color: white; display: flex; justify-content: center; align-items: center;">
-        <h1>Sitenin Geri Kalan İçeriği Buradan Başlar</h1>
-    </div>
+    <!-- Kurumsal/İmalathane Bölümü -->
+    <section id="kurumsal" class="manufacturing-section">
+        <div class="container">
+            <h2>Cookie Woman İmalathanesi</h2>
+            <p class="section-description-wide">
+                Cookie Woman imalathanesi, en kaliteli malzemelerle hazırlanan lezzetli kurabiyelerin doğduğu yerdir. Hijyenik ve modern üretim tesislerimizde, özenle seçilmiş malzemelerle hazırladığımız çikolatalı cookie, tatlı kurabiye ve Lotus Cookie Kurabiye çeşitleriyle fark yaratıyoruz. İmalathanemizdeki profesyonel ekibimiz, her bir kurabiyeyi sevgi ve titizlikle üretir, böylece sizlere en taze ve lezzetli ürünleri sunarız.
+            </p>
+        </div>
+    </section>
+
+    <!-- Kalite Politikası Bölümü -->
+    <section class="quality-policy-section">
+        <div class="container policy-content">
+            <div class="policy-text">
+                <h2>Kalite Politikamız</h2>
+                <p>
+                    Cookie Woman olarak, müşterilerimize en yüksek kalitede ürünleri sunmayı taahhüt ediyoruz. Kalite politikamızın temel taşları şunlardır:
+                </p>
+
+                <div class="policy-points">
+                    <div class="policy-item">
+                        <div class="icon-box"><i class="fas fa-cookie-bite"></i></div>
+                        <h3>En İyi Malzemeler</h3>
+                        <p>
+                            Cookie Kurabiyelerimizi üretirken, yalnızca en kaliteli ve taze malzemeleri kullanırız. Malzeme seçiminde doğallığa ve güvenilirliğe öncelik veririz.
+                        </p>
+                    </div>
+
+                    <div class="policy-item">
+                        <div class="icon-box"><i class="fas fa-hand-sparkles"></i></div>
+                        <h3>Hijyen Ve Güvenlik</h3>
+                        <p>
+                            İmalat süreçlerimizde hijyen ve güvenlik standartlarına sıkı sıkıya bağlıyız. Üretim tesislerimizde düzenli kontroller ve temizlik yapılır, personelimiz hijyen eğitimlerinden geçer.
+                        </p>
+                    </div>
+
+                    <div class="policy-item">
+                        <div class="icon-box"><i class="fas fa-user-check"></i></div>
+                        <h3>Müşteri Memnuniyeti</h3>
+                        <p>
+                            Müşterilerimizin memnuniyeti bizim için en önemli önceliktir. Siparişlerinizin zamanında ve eksiksiz teslim edilmesi için büyük bir titizlikle çalışırız. Her bir ürünümüzle sizlere en iyi deneyimi sunmayı hedefleriz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="policy-image-container">
+                <!-- RESİM YERİ: KALİTE POLİTİKASI SAĞ RESMİ (Lotus Biscoff Kavanozu vb.) -->
+                <img src="https://placehold.co/400x500/B8860B/fff?text=LOTUS+BISCOFF+RESMI" alt="Kalite Standartları Görseli">
+            </div>
+        </div>
+    </section>
 
 
-    <script src="script.js"></script>
+    <!-- Footer (Alt Bilgi) -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="https://placehold.co/120x50/333/fff?text=LOGO" alt="Cookie Woman Logo">
+            </div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#anasayfa">ANASAYFA</a></li>
+                    <li><a href="#urunler">ÜRÜNLER</a></li>
+                    <li><a href="#davet">DAVET</a></li>
+                    <li><a href="#kurumsal">KURUMSAL</a></li>
+                    <li><a href="#iletisim">İLETİŞİM</a></li>
+                </ul>
+            </nav>
+            <div class="footer-bottom">
+                <div class="social-media-footer">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p>&copy; 2024 Cookie Woman Tüm Hakları Saklıdır.</p>
+                <div class="yurum-medya">
+                    <!-- RESİM YERİ: YORUM MEDYA LOGO URL -->
+                    <img src="https://placehold.co/100x30/333/fff?text=YORUM+MEDYA" alt="Yorum Medya">
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
